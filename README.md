@@ -113,26 +113,44 @@ The Selberg trace formula then becomes the **MOD-PRIMA bridge**: the left side i
 
 ### Coordinate 3 — PRIMORDIUM: Primes = Prime Geodesics on $M$
 
-The prime geodesic theorem on $M$ states:
+---
 
-$$\#\{P_0 : \ell(P_0) \leq x\} \sim \frac{e^x}{x} \quad \text{as } x \to \infty$$
+**Two counting theorems, one dictionary.** Let $P_0$ range over primitive closed geodesics on $M$ with length $\ell(P_0)$, and let $\pi_M(x)$ count those with $\ell(P_0) \leq x$. The prime geodesic theorem gives:
 
-This is formally identical to the prime number theorem $\pi(x) \sim x/\log x$ under the substitution $e^x \leftrightarrow x$, $\ell(P_0) \leftrightarrow \log p$.
+$$\pi_M(x) \;\sim\; \frac{e^x}{x} \qquad\text{as } x \to \infty$$
 
-The identification: **prime numbers are prime geodesics on $M$**. The Riemann hypothesis (zeros of $\zeta(s)$ on $\text{Re}(s) = 1/2$) and the Selberg conjecture (eigenvalues of $\Delta_M \geq 1/4$) are the same spectral bound in two coordinate systems.
+The prime number theorem gives:
 
-Zhang's bounded gap theorem — $\liminf(p_{n+1}-p_n) \leq 246$ — is the prime geodesic statement that consecutive prime geodesics cannot be arbitrarily far apart: there is a computable upper bound on the "spectral gap" between consecutive Laplace eigenvalues of the discrete prime spectrum. The Selberg sieve (PRIMORDIUM Identity 1) is the operator that projects the prime indicator function onto the prime geodesic eigenfunctions on $M$.
+$$\pi(x) \;\sim\; \frac{x}{\log x} \qquad\text{as } x \to \infty$$
 
-**Prime-geodesic-Fisher correspondence:**
+These are the same asymptotic under the substitution $p \leftrightarrow e^{\ell(P_0)}$, i.e., the geodesic length $\ell(P_0)$ plays the role of $\log p$. The dictionary is canonical and exact.
+
+---
+
+**The three-way correspondence.** Primes, prime geodesics, and Fisher eigenvalues are one object in three coordinate systems:
 
 | Primes (PRIMORDIUM) | Prime geodesics on $M$ | Fisher eigenvalues (PRIMA) |
 |---|---|---|
-| Prime $p$ | Prime geodesic $P_0$ of length $\log p$ | Fisher eigenvalue $\lambda_k$ |
-| Bounded gap: gap $\leq 246$ | Geodesic gap $\leq 246\cdot\varepsilon$ bounded | Eigenvalue gap: spectral gap $\geq 3/16$ |
-| Zhang: gap $< \infty$ unconditional | Prime geodesic gap bounded | Fisher spectral gap $> 0$ at $\phi$-equilibrium |
-| Twin prime: gap $= 2$ | Minimal geodesic gap | Fisher gap $= 1$ (adjacent eigenvalues) |
-| Cramér model | Independent geodesics (no correlation) | $G_{\text{coord}} = 0$: no spectral coherence |
-| Selberg sieve $\lambda_d$ | Projection onto prime geodesic eigenfunctions | $F^+$: projection onto positive eigenfunctions |
+| Prime $p$ | Primitive geodesic $P_0$, length $\ell(P_0) = \log p$ | Fisher eigenvalue $\lambda_k$ |
+| Prime gap $p_{n+1} - p_n$ | Gap $\ell(P_0^{(n+1)}) - \ell(P_0^{(n)})$ between geodesic lengths | Gap $\lambda_{k+1} - \lambda_k$ between Fisher eigenvalues |
+| Zhang: gap $\leq 246$ unconditional | Prime geodesic length gap bounded above | Fisher spectral gap $> 0$ at $\phi$-equilibrium |
+| Twin prime conjecture: gap $= 2$ | Minimal prime geodesic length gap | Minimal Fisher eigenvalue gap |
+| Cramér model: primes independent | Geodesics freely independent on $M$ | $G_{\text{coord}} = 0$: no spectral coherence |
+| Selberg sieve weights $\lambda_d$ | Projection onto prime geodesic eigenmodes | $F^+$: projection onto $\text{col}(F)$ eigenmodes |
+| Bombieri-Vinogradov: $\theta = 1/2$ | Geodesic equidistribution to level $1/2$ | MEP fixed point $|\bar\Xi| = \log\phi \approx 1/2$ |
+
+---
+
+**The two great spectral conjectures are the same bound in two coordinates:**
+
+- **Riemann Hypothesis:** all non-trivial zeros $\rho$ of $\zeta(s)$ lie on the line $\text{Re}(\rho) = 1/2$
+- **Selberg conjecture:** all Laplace eigenvalues $\lambda_j$ on congruence quotients of $M$ satisfy $\lambda_j \geq 1/4$
+
+Both say the relevant spectrum cannot stray below the critical line. Deligne proved the Ramanujan conjecture for holomorphic cusp forms — equivalent to Selberg for those forms — confirming eigenvalue bounds for that class. The unconditional Selberg bound $\lambda_j \geq 3/16$, proved in 1965, is the floor the full architecture uses in every spectral gap argument.
+
+---
+
+**Zhang in geodesic language.** Zhang's theorem — infinitely many prime pairs with gap at most 246 — translates directly: there exist infinitely many consecutive prime geodesics on $M$ whose lengths differ by at most $\log 246$. The prime geodesic spectrum of $M$ is spectrally coherent at all scales; it cannot develop unbounded gaps. The Selberg sieve is the spectral projection operator that isolates prime geodesic eigenmodes from the full spectrum of $\Delta_M$, exactly as $F^+$ isolates $\text{col}(F)$ from the full parameter space.
 
 ### Coordinate 4 — MOCK: Mock Theta Functions = Spectral Data Near Cusps of $M$
 
@@ -224,7 +242,7 @@ This is the functional equation of the Fisher spectral zeta function on $M$, def
 
 Spectral flow counts the net number of eigenvalues that cross zero as a parameter varies. For a family of self-adjoint operators $\{A_t\}_{t \in [0,1]}$:
 
-$$\text{sf}(\{A_t\}) = \#\{\text{eigenvalues crossing 0 from below}\} - \#\{\text{eigenvalues crossing 0 from above}\}$$
+$$\text{sf}(\{A_t\}) = \left|\{\text{eigenvalues crossing 0 from below}\}\right| - \left|\{\text{eigenvalues crossing 0 from above}\}\right|$$
 
 **Grokking is spectral flow.** The Fisher matrix $F_t$ evolves during training. At each grokking event, one eigenvalue crosses from $\ker(F_t)$ (zero eigenvalue, null space) to $\text{col}(F_t)$ (positive eigenvalue, column space). This is spectral flow $= +1$.
 
@@ -275,29 +293,55 @@ The Ramanujan conjecture ($\lambda_1 \geq 1/4$, unconditionally for holomorphic 
 
 ## The Spectral Partition Function
 
-The partition function $Z(X;\beta)$ is $\#P$-hard. SPECTER identifies its spectral structure:
+---
 
-$$Z(X;\beta) = \text{Tr}\left[e^{-\beta \Delta_F}\right] = \sum_{k \geq 0} e^{-\beta \lambda_k}$$
+> **Core object:** $Z(X;\beta)$ is sharp-P-hard to compute exactly. SPECTER identifies its spectral structure and derives the $\phi$-equilibrium as its unique saddle point.
 
-where $\lambda_k$ are the Fisher eigenvalues. This is the **spectral partition function** — the heat kernel trace of the Laplace-Beltrami operator on the training manifold.
+---
 
-At short times ($\beta \to 0$): $Z(X;\beta) \sim (4\pi\beta)^{-d/2} \cdot \text{Vol}(M)$ — the space is effectively flat, all eigenvalues contribute equally. This is the pre-training maximum-entropy state.
+### Structure
 
-At long times ($\beta \to \infty$): $Z(X;\beta) \sim e^{-\beta\lambda_0}$ — only the ground state survives. This is the post-grokking minimum-description-length state.
+The partition function is the **heat kernel trace** of the Laplace-Beltrami operator $\Delta_F$ on the training manifold:
 
-The $\phi$-equilibrium is the saddle point of $Z(X;\beta)$ — the inverse temperature $\beta^* = \log\phi^{-1}$ at which the heat kernel trace achieves maximum coherent information propagation:
+$$Z(X;\beta) \;=\; \text{Tr}\!\left[e^{-\beta \Delta_F}\right] \;=\; \sum_{k \geq 0} e^{-\beta \lambda_k}$$
 
-$$\frac{\partial}{\partial\beta}\log Z\big|_{\beta=\beta^*} = -\frac{\sum_k \lambda_k e^{-\beta\lambda_k}}{\sum_k e^{-\beta\lambda_k}} = -\log\phi$$
+where $\{\lambda_k\}$ are the eigenvalues of the Fisher matrix $F$. Each term $e^{-\beta\lambda_k}$ is the Boltzmann weight of the $k$-th Fisher eigendirection at inverse temperature $\beta$.
 
-This is the thermodynamic identity $\langle H \rangle = -\partial_\beta \log Z = \log\phi$ at the $\phi$-equilibrium — the expected Fisher eigenvalue at the MEP optimum equals $\log\phi$.
+---
 
-**The spectral interpretation of $G_{\text{coord}}$.** The coordination gain is the mutual information between sequential spectral contributions to $Z$:
+### Three Regimes
 
-$$G_{\text{coord}} = \sum_{t < s} I(a_t; a_s \mid X_{t-1}) = \text{Tr}\left[\log Z_{\text{joint}} - \log Z_t - \log Z_s\right]$$
+| Regime | Parameter | Behavior | ERI Meaning |
+|---|---|---|---|
+| **Pre-training** | $\beta \to 0$ | $Z \sim (4\pi\beta)^{-d/2}\cdot\text{Vol}(M)$ — flat, all modes equal | Maximum entropy; all Fisher directions equally uninformative |
+| **$\phi$-equilibrium** | $\beta^* = 1/\log\phi$ | Saddle point of $Z$ — maximum coherent propagation | MEP optimum; col$(F)$ dominates, ker$(F)$ receives zero |
+| **Post-grokking** | $\beta \to \infty$ | $Z \sim e^{-\beta\lambda_0}$ — ground state survives | Minimum description length; single learned algorithm |
 
-where $Z_{\text{joint}}$ is the joint spectral partition function of the combined $(t,s)$ subsystem. This is the **spectral free mutual information** of Voiculescu's free probability theory (EIGEN, Result 6): $G_{\text{coord}} = \chi(\mu_{F,\text{joint}}) - \chi(\mu_{F,t}) - \chi(\mu_{F,s})$, where $\chi$ is the free entropy of the Fisher spectral measure.
+---
 
-$G_{\text{coord}} > 0$ if and only if the joint spectral measure is not freely independent — if and only if the training trajectories of steps $t$ and $s$ are correlated on $M$. This is the spectral statement of the crystallization condition.
+### The $\phi$-Equilibrium as Saddle Point
+
+The $\phi$-equilibrium is the unique $\beta^*$ satisfying:
+
+$$\left.\frac{\partial}{\partial\beta}\log Z\right|_{\beta=\beta^*} \;=\; -\,\frac{\displaystyle\sum_k \lambda_k\, e^{-\beta\lambda_k}}{\displaystyle\sum_k e^{-\beta\lambda_k}} \;=\; -\log\phi$$
+
+This is the thermodynamic identity: the **expected Fisher eigenvalue at the MEP optimum equals** $\log\phi$. Equivalently, $\beta^* = 1/\log\phi$ is the inverse temperature at which the heat kernel trace achieves maximum entropy production — neither collapsing to the ground state nor spreading uniformly across all modes.
+
+---
+
+### Spectral Interpretation of $G_{\text{coord}}$
+
+The coordination gain is the **spectral free mutual information** between sequential heat kernels:
+
+$$G_{\text{coord}} \;=\; \sum_{t < s} I(a_t;\, a_s \mid X_{t-1}) \;=\; \chi(\mu_{F,\,\text{joint}}) \;-\; \chi(\mu_{F,\,t}) \;-\; \chi(\mu_{F,\,s})$$
+
+where $\chi(\mu)$ is Voiculescu's free entropy of the Fisher spectral measure $\mu$. Three cases:
+
+- $G_{\text{coord}} = 0$: the joint Fisher spectral measure **factors** — steps $t$ and $s$ are freely independent; training trajectories on $M$ are uncorrelated. Pre-crystallization.
+- $G_{\text{coord}} > 0$: the joint measure **does not factor** — training trajectories are correlated on $M$. Post-crystallization.
+- $G_{\text{coord}} = \Phi(K)$: full Imago condition — the kernel's internal integration is completely expressed as external spectral coherence.
+
+$G_{\text{coord}} > 0$ is the spectral statement of the crystallization condition: the joint Fisher spectral measure of any two training steps is not freely independent if and only if their trajectories share a kernel on $M$.
 
 ---
 
@@ -338,7 +382,7 @@ This is not a proof of RH from collective intelligence theory. It is the identif
 ## The SPECTER Manifold
 
 ```
-SPECTRAL PARTITION FUNCTION: Z(X;β) = Tr[exp(-β·Δ_F)]   [#P-hard]
+SPECTRAL PARTITION FUNCTION: Z(X;β) = Tr[exp(-β·Δ_F)]   [sharp-P-hard]
          │
          │  [Selberg Trace Formula: spectral ↔ geometric duality]
          │
@@ -410,7 +454,7 @@ PHASE TRANSITION (same event in all seven coordinates):
 | $\phi$-equilibrium | $\phi$-deformed critical line | $|\bar\Xi| = \log\phi$: fixed pt of $s\leftrightarrow 1-s/\phi$ |
 | $3/16$ (Selberg) | Universal spectral floor | $\lambda_1(M) \geq 3/16$: six coordinate forms |
 | RH (if true) | Uniqueness of $\phi$-equilibrium | All zeros on $\text{Re}(s)=1/2 \Rightarrow$ unique attractor |
-| $Z(X;\beta)$ | Heat kernel trace $\text{Tr}[e^{-\beta\Delta_F}]$ | $\#P$-hard; $\phi$-equilibrium at $\beta^* = 1/\log\phi$ |
+| $Z(X;\beta)$ | Heat kernel trace $\text{Tr}[e^{-\beta\Delta_F}]$ | Sharp-P-hard; $\phi$-equilibrium at $\beta^* = 1/\log\phi$ |
 | Ramsey theory | Geodesic equidistribution on $M$ | Furstenberg: multiple correlations $> 0$ |
 | FGH level $f_{11/8}$ | Spectral growth rate at Selberg floor | $G_{\text{coord}}(T) \sim T^{11/8}$, $\eta \geq 5/8$ |
 
